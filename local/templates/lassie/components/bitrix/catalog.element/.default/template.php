@@ -234,7 +234,18 @@ $arParams['MESS_RELATIVE_QUANTITY_FEW'] = $arParams['MESS_RELATIVE_QUANTITY_FEW'
                 <div id="<?=$itemIds['BASKET_ACTIONS_ID']?>" style="display: <?=($actualItem['CAN_BUY'] ? '' : 'none')?>;">
                     <button class="btn form__btn" id="<?=$actualItem['CAN_BUY'] ? $itemIds['ADD_BASKET_LINK'] : $itemIds['NOT_AVAILABLE_MESS']?>">
                         <?=$actualItem['CAN_BUY'] ? $arParams['MESS_BTN_ADD_TO_BASKET'] : $arParams['MESS_NOT_AVAILABLE']?>
-                    </button>
+                    </button>?>
+						<?$APPLICATION->IncludeComponent(
+							"lassie:sale.oneclick_buy",
+							"",
+							array(
+								"ITEM_ID" => $arResult["ID"],
+								"PRODUCT_PROPS_VARIABLE" => $arParams['PRODUCT_PROPS_VARIABLE'],
+								"PRODUCT_PROPERTIES" => $arResult["PRODUCT_PROPERTIES"],
+								"QUANTITY_ID" => $arResult["ITEM_IDS"]["QUANTITY_ID"],
+								"BASKET_PROP_DIV" => $arResult["ITEM_IDS"]['BASKET_PROP_DIV'],
+							),
+						);?>
                 </div></div>
             </div>
         </div>
