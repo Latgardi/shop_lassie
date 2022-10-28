@@ -127,4 +127,22 @@ if (isset($templateData['JS_OBJ']))
 		</script>
 		<?
 	}
-}
+}?>
+<div id="oneclick_tmp">
+<?$APPLICATION->IncludeComponent(
+	"lassie:sale.oneclick_buy",
+	"",
+	array(
+		"ITEM_ID" => $arResult["ID"],
+		"PRODUCT_PROPS_VARIABLE" => $arParams['PRODUCT_PROPS_VARIABLE'],
+		"PRODUCT_PROPERTIES" => $arResult["PRODUCT_PROPERTIES"],
+		"QUANTITY_ID" => $arResult["ITEM_IDS"]["QUANTITY_ID"],
+		"BASKET_PROP_DIV" => $arResult["ITEM_IDS"]['BASKET_PROP_DIV'],
+	),
+);?>
+</div>
+<script>
+    let oneclick_tmp = BX("oneclick_tmp")
+    BX("oneclick").innerHTML = oneclick_tmp.innerHTML
+    oneclick_tmp.remove()
+</script>

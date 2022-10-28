@@ -16,3 +16,10 @@ if (isset($arResult["PROPERTIES"]["IMAGES"])) {
 }
 $arResult["IMAGES"] = $images;
 
+$mainId = $component->GetEditAreaId($arResult['ID']);
+$arResult["ITEM_IDS"]["QUANTITY_ID"] = $mainId.'_quantity';
+$arResult["ITEM_IDS"]["BASKET_PROP_DIV"] = $mainId.'_basket_prop';
+$component->setResultCacheKeys(array(
+	"ID",
+	"ITEM_IDS"
+));
